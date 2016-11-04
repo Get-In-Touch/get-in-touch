@@ -1,6 +1,6 @@
 import { takeEvery } from 'redux-saga';
-import { call, put } from '../../../../node_modules/redux-saga/effects.d';
-import APIs from '../../APIs';
+import { call, put } from 'redux-saga/effects';
+import APIs from '../../../APIs';
 import {
   REQUEST_ADD_CONTACT,
   ADD_CONTACT_SUCCESS,

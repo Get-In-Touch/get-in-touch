@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ContactCard from '../ContactCard';
+import ContactCard from '../Contacts/ContactCard';
 import { requestContactData } from './actions';
 import styles from './styles.css';
 

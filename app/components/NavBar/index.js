@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './styles.css';
 import { Link } from 'react-router';
-import SignIn from '../../containers/SignIn';
+import SignIn from '../../containers/Authentication/SignIn';
 
 export default class Navbar extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {

@@ -29,7 +29,7 @@ export class AddContactButton extends React.Component { // eslint-disable-line r
           bsSize="large"
           onClick={this.open}
         >
-        Add Contact
+          Add Contact
         </Button>
         <Modal
           show={this.state.showModal}
