@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const server = {
   fetchAllContacts(userId) { // todo: update backend to expect new userId data
-    console.log('userId from APIs: ', userId);
     return axios.get(`/api/contacts?userId=${userId}`);
   },
   updateContact(contactId, userId, values) { // todo: update backend to expect new userId data

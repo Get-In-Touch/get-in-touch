@@ -1,7 +1,7 @@
 // Server-side validation
 const moment = require('moment');
 
-exports.contactName = function (name) {
+exports.contactName = function contactName(name) {
   if (name && typeof name !== 'string') {
     return 'Name must be a string';
   }
@@ -11,7 +11,7 @@ exports.contactName = function (name) {
   return undefined;
 };
 
-exports.contactEmail = function (email) {
+exports.contactEmail = function contactEmail(email) {
   if (email && typeof email !== 'string') {
     return 'Email must be a string';
   }
@@ -24,7 +24,7 @@ exports.contactEmail = function (email) {
   return undefined;
 };
 
-exports.contactPhone = function (phone) {
+exports.contactPhone = function contactPhone(phone) {
   if (phone && typeof phone !== 'string') {
     return 'Phone must be a string';
   }
@@ -34,7 +34,7 @@ exports.contactPhone = function (phone) {
   return undefined;
 };
 
-exports.contactContactFrequency = function (contactFrequency) {
+exports.contactContactFrequency = function contactContactFrequency(contactFrequency) {
   if (contactFrequency && typeof contactFrequency !== 'string') {
     return 'Contact frequency must be a string';
   }
@@ -44,7 +44,7 @@ exports.contactContactFrequency = function (contactFrequency) {
   return undefined;
 };
 
-exports.contactLastContacted = function (lastContacted) {
+exports.contactLastContacted = function contactLastContacted(lastContacted) {
   if (lastContacted && typeof lastContacted !== 'string') {
     return 'Last Contacted must be a string';
   }

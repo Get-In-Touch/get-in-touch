@@ -41,8 +41,8 @@ function createOptionGroups(storiesGroupedByTopic) {
       <optgroup key={i} label={topicGroup.get('topic')}>
         {
           topicGroup.get('stories')
-            .map((story, i) => (
-              <option key={i} value={story.get('id')}>{story.get('title')}</option>
+            .map((story, idx) => (
+              <option key={idx} value={story.get('id')}>{story.get('title')}</option>
             ))
             .toArray()
         }

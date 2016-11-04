@@ -8,7 +8,6 @@ import styles from './styles.css';
 class Dashboard extends React.Component { // eslint-disable-line react/prefer-stateless-function
   componentWillMount() {
     // When the component is loading, we request the contacts from the server
-    console.log('app/containers/Dashboard/index.js:11; currentUser: ', this.props.signIn.get('currentUser'));
     this.props.requestContactData(this.props.signIn.get('currentUser'));
   }
 
