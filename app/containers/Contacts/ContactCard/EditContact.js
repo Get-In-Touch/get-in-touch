@@ -8,7 +8,7 @@ import {
   contactPhone,
   contactLastContacted,
   contactContactFrequency, contactContactFrequencyWarning,
-} from '../../utils/validation';
+} from '../../../utils/validation';
 
 const validate = (values) => ({
   name: contactName(values.get('name')),
@@ -24,12 +24,10 @@ const warn = (values) => ({
 });
 
 const renderField = ({ input, name, label, type, meta: { touched, error, warning } }) => ( // eslint-disable-line react/prop-types
-  <div className={`row ${styles.formFieldRow}`}>
-    <div className={`col-sm-3 ${styles.formFieldLabelDiv}`}>
-      <label htmlFor={name}>{label}:</label>
-    </div>
-    <div className={'col-sm-9'}>
-      <input className={`${styles.formField}${(touched && error) ? ` ${styles.formFieldError}` : ''}`} {...input} placeholder={label} type={type} />
+  <div className={"form-group"}>
+    <label htmlFor={name} className="col-sm-3 control-label">{label}</label>
+    <div className="col-sm-9">
+      <input className={`form-control${(touched && error) ? ` ${styles.formFieldError}` : ''}`} {...input} placeholder={label} type={type} />
       {
         touched &&
         ((error && <div className={styles.formErrorMessage}>{error}</div>) ||
@@ -51,7 +49,7 @@ class ContactForm extends React.Component { // eslint-disable-line react/prefer-
 
     return (
       <div className="col-sm-10">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-horizontal">
           <Field name="name" label="Name" type="text" component={renderField} />
           <Field name="email" label="Email" type="email" component={renderField} />
           <Field name="phone" label="Phone" type="text" component={renderField} />
