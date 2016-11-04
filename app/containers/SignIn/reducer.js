@@ -7,6 +7,7 @@ const initialState = fromJS({
   currentUser: 1,
   users: [
     { userId: 1, name: 'Nico Greenarry' },
+    { userId: 3, name: 'George Weiler' },
     { userId: 2, name: 'Elyse Greenarry' },
   ],
 });
