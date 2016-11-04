@@ -1,0 +1,17 @@
+.formFieldError,
+.formFieldError:focus {
+  border-color: red;
+  box-shadow: 0 0 5px 1px red;
+  -moz-box-shadow: 0 0 5px 1px red;
+  -webkit-box-shadow: 0 0 5px 1px red;
+}
+
+.formErrorMessage, .formWarningMessage {
+  margin: 1px 0;
+}
+.formErrorMessage {
+  color: red;
+}
+.formWarningMessage {
+  color: #df8e00;
+}

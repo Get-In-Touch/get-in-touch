@@ -110,52 +110,6 @@ textarea{
   color: white;
 }
 
-.formFieldRow {
-  height: 5em;
-}
-
-.formFieldLabelDiv, .formField {
-  position: relative;
-  margin: 1.5em 0;
-}
-.formFieldLabelDiv label,
-.formField input:not([type=submit]):not([type=file]) {
-  font-size: 1.1em;
-  font-weight: normal;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  /*transform: translateX(-50%);*/
-}
-.formFieldLabelDiv label {
-  right: 0;
-}
-
-.formField {
-  width: 100%;
-  margin: 0;
-  border: solid 1px #dcdcdc;
-  border-radius: 8px;
-  padding: 5px;
-  outline: none;
-  transition: box-shadow 0.3s, border 0.3s;
-  -moz-transition: box-shadow 0.3s, border 0.3s;
-  -webkit-transition: box-shadow 0.3s, border 0.3s;
-}
-.formField {
-  /*border: solid 1px #707070;*/
-  /*box-shadow: 0 0 5px 1px #969696;*/
-  /*-moz-box-shadow: 0 0 5px 1px #969696;*/
-  /*-webkit-box-shadow: 0 0 5px 1px #969696;*/
-}
-.formFieldError,
-.formFieldError:focus {
-  border-color: red;
-  box-shadow: 0 0 5px 1px red;
-  -moz-box-shadow: 0 0 5px 1px red;
-  -webkit-box-shadow: 0 0 5px 1px red;
-}
-
 .formControls {
   margin: 20px 0;
 }
@@ -165,16 +119,4 @@ textarea{
   right: -30px;
 }
 .editSubmitButton {
-}
-
-.formErrorMessage, .formWarningMessage {
-  margin: 1px 0;
-  /*height: 14px;*/
-}
-.formErrorMessage {
-  color: red;
-}
-
-.formWarningMessage {
-  color: #df8e00;
 }
