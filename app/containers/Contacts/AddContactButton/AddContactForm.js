@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form/immutable';
+import { Field, reduxForm } from '../../../../node_modules/redux-form/immutable';
 import { Button, Row } from 'react-bootstrap';
 import styles from './styles.css';
 

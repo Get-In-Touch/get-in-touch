@@ -6,11 +6,11 @@
 import { combineReducers } from 'redux-immutable';
 import { fromJS } from 'immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
-import signInReducer from './containers/SignIn/reducer';
+import signInReducer from 'containers/Authentication/SignIn/reducer';
 import appStatusReducer from './containers/App/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
-import contactsReducer from './containers/ContactCard/reducer';
-import storiesReducer from 'models/stories/reducer';
+import contactsReducer from 'containers/Contacts/ContactCard/reducer';
+import storiesReducer from 'containers/Stories/reducer';
 import { reducer as formReducer } from 'redux-form/immutable';
 /*
  * routeReducer

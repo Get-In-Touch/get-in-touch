@@ -7,8 +7,8 @@ import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import homepageSagas from './containers/Dashboard/sagas';
-import contactCardSagas from './containers/ContactCard/sagas';
-import addContactSaga from './containers/AddContactButton/sagas';
+import contactCardSagas from 'containers/Contacts/ContactCard/sagas';
+import addContactSaga from 'containers/Contacts/AddContactButton/sagas';
 import createReducer from './reducers';
 
 const sagaMiddleware = createSagaMiddleware();

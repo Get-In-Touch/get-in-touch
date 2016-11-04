@@ -80,7 +80,12 @@ export class ContactCard extends React.Component { // eslint-disable-line react/
 
   handleEditSubmit(values) {
     const { contact, signIn } = this.props;
-    this.props.requestUpdateContact(contact.get('id'), signIn.get('currentUser'), values, () => this.setState({ editing: false }));
+    this.props.requestUpdateContact(
+      contact.get('id'),
+      signIn.get('currentUser'),
+      values,
+      () => this.setState({ editing: false }) // success callback to be called by saga
+    );
   }
 
   renderComposePane() {

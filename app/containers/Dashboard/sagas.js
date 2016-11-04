@@ -3,7 +3,7 @@ import { call, put } from 'redux-saga/effects';
 import APIs from '../../APIs';
 import {
   REQUEST_CONTACT_DATA, CONTACT_FETCH_SUCCEEDED, CONTACT_FETCH_FAILED,
-} from '../ContactCard/constants';
+} from '../Contacts/ContactCard/constants';
 
 // Will be fired on each REQUEST_CONTACT_DATA action
 function* fetchContacts(action) {

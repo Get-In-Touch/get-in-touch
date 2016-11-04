@@ -38,7 +38,7 @@ export default function createRoutes(store) {
       name: 'contactPage',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          System.import('containers/ContactPage/reducer'),
+          System.import('containers/Contacts/ContactPage/reducer'),
           System.import('containers/ContactPage'),
         ]);
 

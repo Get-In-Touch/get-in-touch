@@ -4,7 +4,7 @@ import {
   UPDATE_CONTACT_SUCCESSFUL,
   UPDATE_CONTACT_FAILED,
   CANCEL_CONTACT_EDITING_APP_STATE,
-} from '../ContactCard/constants';
+} from '../Contacts/ContactCard/constants';
 
 const initialState = fromJS({
   containers: {},
