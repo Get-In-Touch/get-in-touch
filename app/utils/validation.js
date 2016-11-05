@@ -52,3 +52,15 @@ export function contactContactFrequencyWarning(contactFrequency) {
   }
   return undefined;
 }
+
+export default {
+  contactValidation: {
+    contactName,
+    contactNameWarning,
+    contactEmail,
+    contactPhone,
+    contactLastContacted,
+    contactContactFrequency,
+    contactContactFrequencyWarning,
+  },
+};

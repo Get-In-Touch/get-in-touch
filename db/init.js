@@ -53,7 +53,6 @@ knex.schema.createTableIfNotExists('contacts', (table) => {
   table.string(contactsColumns.twitter);
   table.string(contactsColumns.lastContacted);
   table.string(contactsColumns.contactFrequency);
-  table.string(contactsColumns.contactNext);
   table.string(contactsColumns.notes);
   table.timestamps();
 }).then(() => (undefined)); // We need to call .then to create the table, but don't need

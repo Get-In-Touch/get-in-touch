@@ -1,18 +1,37 @@
 import React from 'react';
 import { Field, reduxForm } from '../../../../node_modules/redux-form/immutable';
-import { Button, Row } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import styles from './styles.css';
 import formStyles from '../../../assets/formStyles.css';
+import validation from '../../../utils/validation';
+const { contactValidation: val } = validation;
+
+const validate = (values) => ({
+  name: val.contactName(values.get('name')),
+  email: val.contactEmail(values.get('email')),
+  phone: val.contactPhone(values.get('phone')),
+  lastContacted: val.contactLastContacted(values.get('lastContacted')),
+  contactFrequency: val.contactContactFrequency(values.get('contactFrequency')),
+});
+
+const warn = (values) => ({
+  contactName: val.contactNameWarning(values.get('name')),
+  contactFrequency: val.contactContactFrequencyWarning(values.get('contactFrequency')),
+});
 
 const renderField = ({ input, name, label, type, meta: { touched, error, warning } }) => ( // eslint-disable-line react/prop-types
   <div className={"form-group"}>
     <label htmlFor={name} className="col-sm-3 control-label">{label}</label>
     <div className="col-sm-9">
-      <input className={`form-control${(touched && error) ? ` ${styles.formFieldError}` : ''}`} {...input} placeholder={label} type={type} />
+      {
+        type === 'textarea' ?
+          <textarea name={name} className={`form-control${(touched && error) ? ` ${formStyles.formFieldError}` : ''}`} {...input} placeholder={label} cols="30" rows="10" /> :
+          <input name={name} className={`form-control${(touched && error) ? ` ${formStyles.formFieldError}` : ''}`} {...input} placeholder={label} type={type} />
+      }
       {
         touched &&
-        ((error && <div className={styles.formErrorMessage}>{error}</div>) ||
-        (warning && <div className={styles.formWarningMessage}>{warning}</div>))
+        ((error && <div className={formStyles.formErrorMessage}>{error}</div>) ||
+        (warning && <div className={formStyles.formWarningMessage}>{warning}</div>))
       }
     </div>
   </div>
@@ -22,62 +41,12 @@ const AddContactForm = (props) => {
   const { handleSubmit } = props;
   return (
     <form className="form-horizontal" onSubmit={handleSubmit}>
-      <div>
-        <Row>
-          <div className={styles.formFieldContainer}>
-            <Field
-              className={styles.formField}
-              placeholder="Name"
-              name="name"
-              component="input"
-              type="text"
-            />
-          </div>
-        </Row>
-        <Row>
-          <div className={styles.formFieldContainer}>
-            <Field
-              className={styles.formField}
-              placeholder="Email"
-              name="email"
-              component="input"
-              type="email"
-            />
-          </div>
-        </Row>
-        <Row>
-          <div className={styles.formFieldContainer}>
-            <Field
-              className={styles.formField}
-              placeholder="Phone Number"
-              name="phone"
-              component="input"
-            />
-          </div>
-        </Row>
-        <Row>
-          <div className={styles.formFieldContainer}>
-            <Field
-              className={styles.formField}
-              placeholder="Contact Frequency"
-              name="contactFrequency"
-              component="input"
-              type="number"
-            />
-          </div>
-        </Row>
-        <Row>
-          <div className={`${styles.formFieldContainer} ${styles.notes}`}>
-            <Field
-              className={styles.formField}
-              placeholder="Notes..."
-              name="notes"
-              component="input"
-              type="text"
-            />
-          </div>
-        </Row>
-      </div>
+      <Field name="name" label="Name" component={renderField} type="text" />
+      <Field name="email" label="Email" component={renderField} type="text" />
+      <Field name="phone" label="Phone" component={renderField} type="text" />
+      <Field name="lastContacted" label="Last Contacted" type="date" component={renderField} />
+      <Field name="contactFrequency" label="Contact Frequency" component={renderField} type="text" />
+      <Field name="notes" label="Notes" component={renderField} type="textarea" />
       <div>
         <Button className={styles.submitAddContactBtn} type="submit">Submit</Button>
       </div>
@@ -91,4 +60,6 @@ AddContactForm.propTypes = {
 
 export default reduxForm({
   form: 'addContact',
+  validate,
+  warn,
 })(AddContactForm);

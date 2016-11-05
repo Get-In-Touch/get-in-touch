@@ -19,7 +19,7 @@ export function markContactContacted(contactId, lastContactedParam = getToday())
   };
 }
 
-export function requestUpdateContact(contactId, userId, formValues, successCallback) {
+export function requestUpdateContact(contactId, userId, formValues, successCb) {
   const values = formValues.toJS();
   values.lastContacted = values.lastContacted ?
     moment(values.lastContacted).format() :
@@ -30,7 +30,7 @@ export function requestUpdateContact(contactId, userId, formValues, successCallb
     contactId,
     userId,
     values,
-    successCallback,
+    successCb,
   };
 }
 

@@ -20,7 +20,7 @@ const contacts = {
       .catch((err) => res.status(400).send(err));
   },
   add(req, res) {
-    ContactsAPI.add(req.body)
+    ContactsAPI.add(req.body.userId, req.body.values)
       .then((insertedContact) => res.send(insertedContact));
   },
 };

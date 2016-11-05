@@ -11,7 +11,7 @@ import {
 } from './constants';
 import moment from 'moment';
 
-function* updateContact({ contactId, userId, values, successCb }) {
+function* updateContact(/* action */ { contactId, userId, values, successCb }) {
   try {
     const response = yield call(APIs.server.updateContact, contactId, userId, values);
     if (response.error) {

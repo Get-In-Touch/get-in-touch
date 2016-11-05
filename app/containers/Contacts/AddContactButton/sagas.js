@@ -7,9 +7,9 @@ import {
   ADD_CONTACT_FAILURE,
 } from './constants';
 
-function* addContact(action) {
+function* addContact(/* action */ { userId, values }) {
   try {
-    const response = yield call(APIs.server.addContact, action.values);
+    const response = yield call(APIs.server.addContact, userId, values);
     if (response.error) {
       throw new Error(response.error);
     }

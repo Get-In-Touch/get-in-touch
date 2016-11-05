@@ -9,18 +9,16 @@ import moment from 'moment';
 
 const initialState = fromJS([]);
 
-function convertDatesToMoment(contact) {
-  const updatedContact = Object.assign({}, contact);
-  updatedContact.contactNext = moment(contact.contactNext);
-  updatedContact.lastContacted = moment(contact.lastContacted);
-  return updatedContact;
-}
+const convertDatesToMoment = (contact) => {
+  const lastContacted = contact.lastContacted ? moment(contact.lastContacted) : contact.lastContacted;
+  return Object.assign(contact, { lastContacted });
+};
 
 function loadFetchedContactData(state, action) {
   const idsInState = state.map((contact) => contact.get('id'));
   const newContacts = action.contacts
     .filter((contact) => !idsInState.includes(contact.id))
-    .map((contact) => convertDatesToMoment(contact));
+    .map(convertDatesToMoment);
   return state.push(...(newContacts.map((contact) => fromJS(contact))));
 }
 

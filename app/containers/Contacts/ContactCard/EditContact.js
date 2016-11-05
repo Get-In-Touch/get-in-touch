@@ -3,32 +3,27 @@ import { Field, reduxForm } from '../../../../node_modules/redux-form/immutable'
 import { Button, Glyphicon } from 'react-bootstrap';
 import styles from './styles.css';
 import formStyles from '../../../assets/formStyles.css';
-import {
-  contactName, contactNameWarning,
-  contactEmail,
-  contactPhone,
-  contactLastContacted,
-  contactContactFrequency, contactContactFrequencyWarning,
-} from '../../../utils/validation';
+import validation from '../../../utils/validation';
+const { contactValidation: val } = validation;
 
 const validate = (values) => ({
-  name: contactName(values.get('name')),
-  email: contactEmail(values.get('email')),
-  phone: contactPhone(values.get('phone')),
-  lastContacted: contactLastContacted(values.get('lastContacted')),
-  contactFrequency: contactContactFrequency(values.get('contactFrequency')),
+  name: val.contactName(values.get('name')),
+  email: val.contactEmail(values.get('email')),
+  phone: val.contactPhone(values.get('phone')),
+  lastContacted: val.contactLastContacted(values.get('lastContacted')),
+  contactFrequency: val.contactContactFrequency(values.get('contactFrequency')),
 });
 
 const warn = (values) => ({
-  contactName: contactNameWarning(values.get('name')),
-  contactFrequency: contactContactFrequencyWarning(values.get('contactFrequency')),
+  contactName: val.contactNameWarning(values.get('name')),
+  contactFrequency: val.contactContactFrequencyWarning(values.get('contactFrequency')),
 });
 
 const renderField = ({ input, name, label, type, meta: { touched, error, warning } }) => ( // eslint-disable-line react/prop-types
   <div className={"form-group"}>
     <label htmlFor={name} className="col-sm-3 control-label">{label}</label>
     <div className="col-sm-9">
-      <input className={`form-control${(touched && error) ? ` ${formStyles.formFieldError}` : ''}`} {...input} placeholder={label} type={type} />
+      <input name={name} className={`form-control${(touched && error) ? ` ${formStyles.formFieldError}` : ''}`} {...input} placeholder={label} type={type} />
       {
         touched &&
         ((error && <div className={formStyles.formErrorMessage}>{error}</div>) ||

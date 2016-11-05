@@ -84,7 +84,7 @@ export class ContactCard extends React.Component { // eslint-disable-line react/
       contact.get('id'),
       signIn.get('currentUser'),
       values,
-      () => this.setState({ editing: false }) // success callback to be called by saga
+      (() => this.setState({ editing: false })) // success callback to be called by saga
     );
   }
 
@@ -120,10 +120,10 @@ export class ContactCard extends React.Component { // eslint-disable-line react/
     const numberOfDaysLabel = contactFrequency === 1 ?
       'day' :
       `${contactFrequency} days`;
-    const lastContactedLabel = contact.get('lastContacted').format('MMM D, YYYY');
-    const lastContactedDescription = lastContactedLabel === 'Invalid date' ?
-      'Never contacted' :
-      `Last contacted ${lastContactedLabel}`;
+    const lastContacted = contact.get('lastContacted');
+    const lastContactedLabel = lastContacted ?
+      `Last contacted ${lastContacted.format('MMM D, YYYY')}` :
+      'No date recorded for last contact';
     const contactDetails = [contact.get('email'), contact.get('phone')].filter((detail) => detail);
 
     return (
@@ -131,7 +131,7 @@ export class ContactCard extends React.Component { // eslint-disable-line react/
         {this.renderOptionButtons()}
         <h3>{contact.get('name') || '[No contact name]'}</h3>
         <p className={styles.stats}>
-          { lastContactedDescription }<br />
+          { lastContactedLabel }<br />
           Contact every { numberOfDaysLabel }<br />
           <Button className={styles.justContacted} bsSize="small">
             <Glyphicon glyph="ok" /> Just contacted!

@@ -2,17 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styles from './styles.css';
 import ContactCard from '../ContactCard';
-import { Link } from 'react-router';
 
 export class ContactPage extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const allContacts = this.props.contacts;
+    const { contacts } = this.props;
     return (
       <div className={styles.contactPage}>
-        <h1>This is the contact page..</h1>
+        <h1>This is the contact page.</h1>
         {
-          allContacts.map((contact, i) => (
-            <Link key={i} to={contact.get('name')}><ContactCard contact={contact} /></Link>
+          contacts.map((contact, i) => (
+            <ContactCard key={i} contact={contact} />
           ))
         }
       </div>

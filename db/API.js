@@ -80,8 +80,8 @@ const ContactsAPI = {
   delete(userId) {
     return (new ContactModel({ id: userId })).destroy();
   },
-  add(newContact) {
-    return (new ContactModel(newContact)).save();
+  add(userId, values) {
+    return (new ContactModel(Object.assign(values, { userId }))).save();
   },
 };
 
