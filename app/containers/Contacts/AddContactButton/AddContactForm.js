@@ -25,8 +25,21 @@ const renderField = ({ input, name, label, type, meta: { touched, error, warning
     <div className="col-sm-9">
       {
         type === 'textarea' ?
-          <textarea name={name} className={`form-control${(touched && error) ? ` ${formStyles.formFieldError}` : ''}`} {...input} placeholder={label} cols="30" rows="10" /> :
-          <input name={name} className={`form-control${(touched && error) ? ` ${formStyles.formFieldError}` : ''}`} {...input} placeholder={label} type={type} />
+          <textarea
+            name={name}
+            className={`form-control${(touched && error) ? ` ${formStyles.formFieldError}` : ''}`}
+            {...input}
+            placeholder={label}
+            cols="30"
+            rows="10"
+          /> :
+          <input
+            name={name}
+            className={`form-control${(touched && error) ? ` ${formStyles.formFieldError}` : ''}`}
+            {...input}
+            placeholder={label}
+            type={type}
+          />
       }
       {
         touched &&

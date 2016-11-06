@@ -5,6 +5,9 @@ exports.contactName = function contactName(name) {
   if (name && typeof name !== 'string') {
     return 'Name must be a string';
   }
+  if (!name) {
+    return 'Don\'t forget your contact\'s name!';
+  }
   if (name && name.length > 1000) {
     return 'Name must be fewer than 1000 characters';
   }

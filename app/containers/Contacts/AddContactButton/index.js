@@ -50,6 +50,7 @@ export class AddContactButton extends React.Component { // eslint-disable-line r
                 requestAddContact(signIn.get('currentUser'), values);
                 this.close();
               }}
+              initialValues={{ contactFrequency: '180' }}
             />
           </div>
         </Modal>

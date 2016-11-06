@@ -1,7 +1,9 @@
 // Client-side validation
 
 export function contactName(name) {
-  // Name isn't required
+  if (!name) {
+    return 'Don\'t forget your contact\'s name!';
+  }
   if (name && name.length > 1000) {
     return 'Name must be fewer than 1000 characters';
   }
