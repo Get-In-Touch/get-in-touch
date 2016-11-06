@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styles from './styles.css';
 import { Button, Modal, Glyphicon } from 'react-bootstrap';
-import AddContactForm from './AddContactForm';
+import AddEditContactForm from '../AddEditContactForm';
 import { requestAddContact } from './actions';
 
 export class AddContactButton extends React.Component { // eslint-disable-line react/prefer-stateless-function
@@ -21,7 +21,7 @@ export class AddContactButton extends React.Component { // eslint-disable-line r
   }
 
   render() {
-    const { requestAddContact, signIn } = this.props; // eslint-disable-line no-shadow
+    const { requestAddContact, signIn, appStatus } = this.props; // eslint-disable-line no-shadow
     return (
       <div className={styles.addContactButton}>
         <Button
@@ -45,11 +45,14 @@ export class AddContactButton extends React.Component { // eslint-disable-line r
             <h4>Fill out the form below with the new contact information</h4>
           </div>
           <div className={styles.modalContent}>
-            <AddContactForm
-              onSubmit={(values) => {
+            <AddEditContactForm
+              form="AddEditContactForm"
+              handleSubmit={(values) => {
                 requestAddContact(signIn.get('currentUser'), values);
                 this.close();
               }}
+              onCancelClick={() => this.close()}
+              appStatus={appStatus}
               initialValues={{ contactFrequency: '180' }}
             />
           </div>
@@ -62,11 +65,13 @@ export class AddContactButton extends React.Component { // eslint-disable-line r
 AddContactButton.propTypes = {
   requestAddContact: React.PropTypes.func.isRequired,
   signIn: React.PropTypes.object,
+  appStatus: React.PropTypes.object,
 };
 
 function mapStateToProps(state) {
   return {
     signIn: state.get('signIn'),
+    appStatus: state.get('appStatus'),
   };
 }
 

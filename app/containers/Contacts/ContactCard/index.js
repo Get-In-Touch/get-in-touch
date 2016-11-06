@@ -6,7 +6,7 @@ import avatar from './default-avatar.png';
 import { List, Map } from 'immutable';
 import { Panel, Button, Glyphicon } from 'react-bootstrap';
 import { requestUpdateContact, requestContactDeletion, cancelContactEditingAppState } from './actions';
-import EditContact from './EditContact';
+import AddEditContactForm from '../AddEditContactForm';
 import moment from 'moment';
 
 function groupStoriesByTopic(stories) {
@@ -127,7 +127,7 @@ export class ContactCard extends React.Component { // eslint-disable-line react/
     const contactDetails = [contact.get('email'), contact.get('phone')].filter((detail) => detail);
 
     return (
-      <div className={`${styles.contactInfo} col-sm-10`}>
+      <div className={styles.contactInfo}>
         {this.renderOptionButtons()}
         <h3>{contact.get('name') || '[No contact name]'}</h3>
         <p className={styles.stats}>
@@ -169,6 +169,7 @@ export class ContactCard extends React.Component { // eslint-disable-line react/
       phone: contact.get('phone'),
       lastContacted: moment(contact.get('lastContacted')).format('YYYY-MM-DD'),
       contactFrequency: contact.get('contactFrequency'),
+      notes: contact.get('notes'),
     };
 
     return (
@@ -178,18 +179,20 @@ export class ContactCard extends React.Component { // eslint-disable-line react/
             <div className={`${styles.avatarColumn} col-sm-2`}>
               <img className={`${styles.avatar}`} src={avatar} alt="user avatar" />
             </div>
-            {
-              this.state.editing ?
-                <EditContact
-                  onCancelClick={() => this.onClickCancelEdit()}
-                  onSubmit={(values) => this.handleEditSubmit(values)}
-                  form={`EditContactForm_${contact.get('id')}`}
-                  initialValues={initialValues}
-                  appStatus={this.props.appStatus}
-                  contact={contact}
-                /> :
-                this.renderContactDetails()
-            }
+            <div className="col-sm-10">
+              {
+                this.state.editing ?
+                  <AddEditContactForm
+                    onCancelClick={() => this.onClickCancelEdit()}
+                    onSubmit={(values) => this.handleEditSubmit(values)}
+                    form={`AddEditContactForm_${contact.get('id')}`}
+                    initialValues={initialValues}
+                    appStatus={this.props.appStatus}
+                    contact={contact}
+                  /> :
+                  this.renderContactDetails()
+              }
+            </div>
           </div>
         </div>
 
