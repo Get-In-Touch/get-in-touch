@@ -24,5 +24,10 @@ To test your application started with this boilerplate do the following:
 
 1. Run `npm run test` in your terminal and see all the tests pass! (hopefully)
 
+   1. You can run just one test using grep based on the test label
+      (e.g. the string in the `it` or `describe` block) by using this
+      command: `npm test -- --grep=SEARCH_TERM`.
+      This still takes some time to run because it does a lot of setup. 
+
 There are a few more commands related to testing, checkout the [commands documentation](../general/commands.md#testing)
 for the full list!
