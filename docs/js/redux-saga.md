@@ -72,6 +72,9 @@ getComponent(nextState, cb) {
 
 Now add as many sagas to your `sagas.js` file as you want!
 
----
+## Extra reading
 
-_Don't like this feature? [Click here](remove.md)_
+[This article](https://goshakkk.name/lazy-auth-redux-saga-flow/) on how to implement lazy registration/auth
+using sagas is a good illustration not only of how to use sagas,
+but also of a flow complex enough to really justify the use of sagas (or something equivalently sophisticated).
+(Many tutorials show extremely simple use cases that don't justify the overhead of sagas; thunks would work fine.)
