@@ -15,7 +15,7 @@ const getOAuthClient = (function () {
     }
     // TODO: Can the same oAuth2Client only be used once by one user? If so, then even
     // during testing, I'll need to update this code soon, since if I use the code, then
-    // I have to kill the server (or just make a change to a file?) to get a authorization attempt
+    // I have to kill the server (or at least make a change to a file) to get a authorization attempt
     oAuth2Client = new OAuth2(
       config.googleOAuth2.web.client_id,
       config.googleOAuth2.web.client_secret,
